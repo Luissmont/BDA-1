@@ -5,7 +5,7 @@ BEGIN
       SELECT FROM pg_catalog.pg_roles
       WHERE  rolname = 'userpp') THEN
 
-      CREATE ROLE userpp WITH LOGIN PASSWORD 'contraseña123';
+      CREATE ROLE userpp WITH LOGIN PASSWORD 'pass123';
    END IF;
 END
 $do$;

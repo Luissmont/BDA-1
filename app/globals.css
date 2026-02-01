@@ -1,26 +1,64 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
+
+.main-container {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.grid-reportes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cuadro {
+  width: 150px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  transition: transform 0.1s;
+}
+
+.cuadro:hover {
+  transform: scale(3.9); 
+
+}
+
+.color-1 { background-color: #0066cc; } 
+.color-2 { background-color: #cc3333; } 
+.color-3 { background-color: #ffff00; color: #333; }
+.color-4 { background-color: #c4a484; } 
+.color-5 { background-color: #d3d3d3; color: #333; } 
+
+.tabla-contenedor { margin: 20px; border: 1px solid #ccc; }
+.tabla-reporte { width: 100%; border-collapse: collapse; }
+.tabla-reporte th, .tabla-reporte td { border: 1px solid #ddd; padding: 10px; }
+.tabla-reporte th { background-color: #f4f4f4; text-align: left; }

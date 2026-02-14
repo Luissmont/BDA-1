@@ -4,16 +4,16 @@ services:
     container_name: postgres_containerbda
     restart: unless-stopped
     environment:
-      POSTGRES_USER: userpp
-      POSTGRES_PASSWORD: pass123
-      POSTGRES_DB: actividad_db
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_admin_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-actividad_db}
     ports:
-      - "5436:5432" 
+      - "${DB_PORT_EXT:-5436}:5432" 
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./db:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U userpp -d actividad_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-actividad_db}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -25,7 +25,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgres://userpp:pass123@postgres:5432/actividad_db
+      - DB_USER=${DB_USER:-app_reader}
+      - DB_PASSWORD=${DB_PASSWORD:-app_secure_pass_2024}
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-actividad_db}
     depends_on:
       postgres:
         condition: service_healthy

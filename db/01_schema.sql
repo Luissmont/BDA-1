@@ -58,9 +58,6 @@ CREATE TABLE orden_detalles (
 
 
 
-
-
-
 CREATE INDEX idx_ordenes_usuario_id ON ordenes(usuario_id);
 
 CREATE INDEX idx_productos_categoria_id ON productos(categoria_id);

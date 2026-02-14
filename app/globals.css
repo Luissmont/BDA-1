@@ -19,6 +19,11 @@ body {
   padding-top: 50px;
 }
 
+.container {
+  margin: 0 auto;
+  padding: 30px;
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 40px;
@@ -48,17 +53,27 @@ h1 {
 }
 
 .cuadro:hover {
-  transform: scale(2.3); 
-
+  transform: scale(2.3);
 }
 
-.color-1 { background-color: #0066cc; } 
-.color-2 { background-color: #cc3333; } 
-.color-3 { background-color: #ffff00; color: #333; }
-.color-4 { background-color: #c4a484; } 
-.color-5 { background-color: #d3d3d3; color: #333; } 
+.color-1 {
+  background-color: #0066cc;
+}
 
-.tabla-contenedor { margin: 20px; border: 1px solid #ccc; }
-.tabla-reporte { width: 100%; border-collapse: collapse; }
-.tabla-reporte th, .tabla-reporte td { border: 1px solid #ddd; padding: 10px; }
-.tabla-reporte th { background-color: #f4f4f4; text-align: left; }
+.color-2 {
+  background-color: #cc3333;
+}
+
+.color-3 {
+  background-color: #ffff00;
+  color: #333;
+}
+
+.color-4 {
+  background-color: #c4a484;
+}
+
+.color-5 {
+  background-color: #d3d3d3;
+  color: #333;
+}

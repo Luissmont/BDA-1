@@ -1,18 +1,11 @@
--- ============================================
 -- SEED.SQL - Datos Iniciales
--- ============================================
--- Equipo: [Nombre del equipo]
--- Fecha: [Fecha]
--- ============================================
+
 -- ORDEN DE INSERCIÓN:
 -- 1. Catálogos (sin dependencias)
 -- 2. Entidades principales
 -- 3. Relaciones/transacciones
--- ============================================
 
--- ============================================
 -- 1. CATÁLOGOS
--- ============================================
 
 INSERT INTO categorias (nombre, descripcion) VALUES
     ('Electrónica', 'Dispositivos electrónicos y accesorios'),
@@ -21,9 +14,7 @@ INSERT INTO categorias (nombre, descripcion) VALUES
     ('Deportes', 'Equipamiento y ropa deportiva'),
     ('Libros', 'Libros físicos y digitales');
 
--- ============================================
 -- 2. ENTIDADES PRINCIPALES
--- ============================================
 
 -- Usuarios (mínimo 6)
 INSERT INTO usuarios (email, nombre, password_hash) VALUES
@@ -57,47 +48,43 @@ INSERT INTO productos (codigo, nombre, descripcion, precio, stock, categoria_id)
     ('HOME-004', 'Planta Artificial', 'Decoración verde', 19.99, 200, 3),
     ('HOME-005', 'Cuadro Decorativo', 'Arte moderno 50x70cm', 44.99, 60, 3);
 
--- ============================================
 -- 3. TRANSACCIONES/RELACIONES
--- ============================================
 
 -- Órdenes
 INSERT INTO ordenes (usuario_id, total, status) VALUES
-    (1, 1389.97, 'entregado'),    -- Ada compró laptop + mouse + teclado
-    (2, 69.98, 'enviado'),         -- Alan compró 2 camisetas + webcam (ajustado)
-    (3, 284.98, 'pagado'),         -- Grace compró silla + lámpara
-    (4, 99.98, 'pendiente'),       -- Linus compró jeans + sudadera
-    (5, 1299.99, 'pagado'),        -- Margaret compró laptop
-    (6, 399.99, 'pagado');         -- Donald compró monitor
+    (1, 1389.97, 'entregado'),    
+    (2, 69.98, 'enviado'),        
+    (3, 284.98, 'pagado'),       
+    (4, 99.98, 'pendiente'),      
+    (5, 1299.99, 'pagado'),        
+    (6, 399.99, 'pagado');         
 
 -- Detalle de órdenes
 INSERT INTO orden_detalles (orden_id, producto_id, cantidad, precio_unitario) VALUES
     -- Orden 1 de Ada
-    (1, 1, 1, 1299.99),  -- 1 Laptop
-    (1, 2, 1, 29.99),    -- 1 Mouse
-    (1, 3, 1, 89.99),    -- 1 Teclado
+    (1, 1, 1, 1299.99),  
+    (1, 2, 1, 29.99),    
+    (1, 3, 1, 89.99),  
     
     -- Orden 2 de Alan
-    (2, 6, 2, 19.99),    -- 2 Camisetas
-    (2, 5, 1, 59.99),    -- 1 Webcam (corregido de producto anterior)
+    (2, 6, 2, 19.99),   
+    (2, 5, 1, 59.99),   
     
     -- Orden 3 de Grace
-    (3, 12, 1, 249.99),  -- 1 Silla
-    (3, 11, 1, 34.99),   -- 1 Lámpara
+    (3, 12, 1, 249.99),  
+    (3, 11, 1, 34.99),   
     
     -- Orden 4 de Linus
-    (4, 7, 1, 49.99),    -- 1 Jeans
-    (4, 8, 1, 39.99),    -- 1 Sudadera
+    (4, 7, 1, 49.99),    
+    (4, 8, 1, 39.99),   
     
     -- Orden 5 de Margaret
-    (5, 1, 1, 1299.99),  -- 1 Laptop
+    (5, 1, 1, 1299.99),  
 
     -- Orden 6 de Donald
-    (6, 4, 1, 399.99);   -- 1 Monitor
+    (6, 4, 1, 399.99);  
 
--- ============================================
--- 4. EDGE CASES (para versión 3 horas)
--- ============================================
+-- 4. cases edge 
 
 -- Caso: String largo pero válido
 INSERT INTO usuarios (email, nombre, password_hash) VALUES
@@ -107,11 +94,11 @@ INSERT INTO usuarios (email, nombre, password_hash) VALUES
 
 -- Caso: Valores en el límite
 INSERT INTO productos (codigo, nombre, precio, stock, categoria_id) VALUES
-    ('EDGE-001', 'Producto Gratuito', 0.00, 0, 1);  -- Precio y stock en 0
+    ('EDGE-001', 'Producto Gratuito', 0.00, 0, 1);  
+    -- Precio y stock en 0
 
--- ============================================
--- CASO QUE DEBERÍA FALLAR (COMENTADO)
--- ============================================
+-- 
+-- CASO fallado
 -- Descomentar para probar que el constraint funciona:
 
 -- Este INSERT falla por UNIQUE en email:
@@ -129,7 +116,5 @@ INSERT INTO productos (codigo, nombre, precio, stock, categoria_id) VALUES
 -- VALUES (1, 1, 0, 100.00);
 -- ERROR: new row violates check constraint "orden_detalles_cantidad_check"
 
--- ============================================
--- FIN DEL SEED
--- ============================================
--- Para ejecutar: \i db/seed.sql
+
+-- ejecutar: \i db/seed.sql

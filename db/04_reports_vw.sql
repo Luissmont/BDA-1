@@ -18,7 +18,8 @@ SELECT
     COALESCE(AVG(p.precio), 0) AS precio_promedio
 FROM categorias c
 JOIN productos p ON c.id = p.categoria_id
-GROUP BY c.id, c.nombre;
+GROUP BY c.id, c.nombre
+HAVING SUM(p.stock) > 0;
 
 /*
 Vista 2: Clientes VIP
